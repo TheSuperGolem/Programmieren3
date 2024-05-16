@@ -1,3 +1,5 @@
+// Committed //
+
 let rows = 50;
 let columns = 100;
 let cell_size = 20;
