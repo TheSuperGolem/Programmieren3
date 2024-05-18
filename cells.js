@@ -1,6 +1,13 @@
 class Empty { }
 
-class Grass {
+class LivingBeing{
+    constructor(){
+        this.row;
+        this.col;
+    }
+}
+
+class Grass{
     constructor() {
         this.color = "green";
         this.energy = 0;
@@ -109,8 +116,8 @@ class Tyrant {
 }
 
 let matrix = [];
-let size = 50;
-let blockSize = 15;
+let size = 100;
+let blockSize = 10;
 
 let creatureAmounts = [
     [Grass, 0.2],
