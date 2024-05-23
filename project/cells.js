@@ -1,14 +1,17 @@
 class Empty { }
 
 class LivingBeing{
-    constructor(){
-        this.row;
-        this.col;
+    constructor(color, energy, row, col){
+        this.color = color;
+        this.energy = energy;
+        this.row = row;
+        this.col = col;
     }
 }
 
-class Grass{
-    constructor() {
+class Grass extends LivingBeing{
+    constructor(color, energy, row, col) {
+        super(color, energy, row, col)
         this.color = "green";
         this.energy = 0;
         this.row;
@@ -34,8 +37,9 @@ class Grass{
     }
 }
 
-class Grazer {
-    constructor() {
+class Grazer extends LivingBeing {
+    constructor(color, energy, row, col) {
+        super(color, energy, row, col);
         this.color = "yellow";
         this.energy = 5;
         this.row;
@@ -77,8 +81,9 @@ class Grazer {
     }
 }
 
-class Tyrant {
-    constructor() {
+class Tyrant extends LivingBeing{
+    constructor(color, energy, row, col) {
+        super(color, energy, row, col)
         this.color = "red";
         this.energy = 80;
         this.row;
