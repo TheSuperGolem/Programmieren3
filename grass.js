@@ -1,5 +1,6 @@
 const LivingBeing = require("./livingbeing");
-let newLivingBeing = new LivingBeing;
+const Empty = require("./empty");
+const {findNeighbours, random} = require("./utils");
 
 module.exports = class Grass extends LivingBeing{
     constructor(color, energy, row, col) {

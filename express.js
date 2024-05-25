@@ -1,7 +1,7 @@
 var express = require("Express");
 var app = express();
 
-app.use(express.static("project"));
+app.use(express.static("."));
 
 app.get("/", function(req, res){
    res.redirect("index.html");
