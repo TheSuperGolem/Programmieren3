@@ -3,7 +3,9 @@ const Grazer = require("./grazer");
 const Tyrant = require("./tyrant");
 const Empty = require("./empty");
 
-const {matrix, size, frameCount, random} = require("./utils");
+const {matrix, size, random} = require("./utils");
+
+let frameCount = 0
 
 let creatureAmounts = [
     [Grass, 0.2],
@@ -38,27 +40,34 @@ function fillMatrix() {
 }
 
 function draw() {
-    console.log("running")
-    for (let row = 0; row < size; row++) {
-        for (let col = 0; col < size; col++) {
-            let obj = matrix[row][col];
-            if (obj instanceof Empty) continue;
-                obj.row = row;
-                obj.col = col;
-                // fill(obj.color)
-                // rect(blockSize * obj.col, blockSize * obj.row, blockSize, blockSize);
-
-            if (obj.stepCount === frameCount) {
-                obj.step();
-                obj.stepCount++;
-            } else if (isNaN(obj.stepCount)) {
-                obj.stepCount = frameCount + 1;
+    for (let col = 0; col < matrix.length; col++) {
+        for (let row = 0; row < matrix[col].length; row++) {
+            element = matrix[row][col]
+            // if (element instanceof Grazer) {
+            //     process.stdout.write("Y")
+            // } else if (element instanceof Grass) {
+            //     process.stdout.write("G")
+            // } else if (element instanceof Tyrant) {
+            //     process.stdout.write("R")
+            // } else if (element instanceof Empty) {
+            //     process.stdout.write(" ")
+            // }
+            if (element instanceof Empty)continue
+            
+            if (element.stepCount === frameCount) {
+                element.step();
+                element.stepCount++;
+            } else if (isNaN(element.stepCount)) {
+                element.stepCount = frameCount + 1;
             }
         }
+        // process.stdout.write("\n")
     }
+    // process.stdout.write("\u001b[" + matrix.length + "A")
+    frameCount++;
 }
 
-module.exports = {setup, draw};
+module.exports = {setup, draw, frameCount};
 
 setup();
 setInterval(draw, 1000);

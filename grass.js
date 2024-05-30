@@ -1,6 +1,6 @@
 const LivingBeing = require("./livingbeing");
 const Empty = require("./empty");
-const {findNeighbours, random} = require("./utils");
+const {matrix, findNeighbours, random} = require("./utils");
 
 module.exports = class Grass extends LivingBeing{
     constructor(color, energy, row, col) {
@@ -24,6 +24,7 @@ module.exports = class Grass extends LivingBeing{
             let free = random(elems);
             let row = free[0];
             let col = free[1];
+            console.log("matrix", matrix)
             matrix[row][col] = new Grass();
             this.energy = 0;
         }

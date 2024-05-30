@@ -1,7 +1,7 @@
 const LivingBeing = require("./livingbeing");
 const Grazer = require("./grazer");
 const Empty = require("./empty");
-const {updatePosition, findNeighbours, random} = require("./utils");
+const {matrix, updatePosition, findNeighbours, random} = require("./utils");
 
 module.exports = class Tyrant extends LivingBeing{
     constructor(color, energy, row, col) {
