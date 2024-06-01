@@ -1,11 +1,15 @@
 const LivingBeing = require("./livingbeing");
+const Grass = require("./grass");
+const Grazer = require("./grazer");
+const Tyrant = require("./tyrant");
 const Empty = require("./empty");
-const {matrix, findNeighbours, random} = require("./utils");
 
-module.exports = class Grass extends LivingBeing{
+const {matrix, random, findNeighbours, updatePosition} = require("./utils")
+
+module.exports = class Explosion extends LivingBeing{
     constructor(color, energy, row, col) {
         super(color, energy, row, col)
-        this.color = "green";
+        this.color = "orange";
         this.energy = 0;
         this.row;
         this.col;
@@ -13,8 +17,11 @@ module.exports = class Grass extends LivingBeing{
 
     step() {
         this.energy++;
-        if (this.energy >= 6) {
+        if (this.energy <= 2) {
             this.multiply();
+        } else if (this.energy >= 3) {
+            this.energy = 0;
+            matrix[this.row][this.col] = new Empty();
         }
     }
 
@@ -24,7 +31,7 @@ module.exports = class Grass extends LivingBeing{
             let free = random(elems);
             let row = free[0];
             let col = free[1];
-            matrix[row][col] = new Grass();
+            matrix[row][col] = new Explosion();
             this.energy = 0;
         }
     }

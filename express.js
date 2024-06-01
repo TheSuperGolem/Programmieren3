@@ -42,7 +42,7 @@ io.on('connection', (socket) => {
     interval = setInterval(() => {
         draw();
         socket.emit('matrix', matrix);
-    }, 1000);
+    }, 30);
 });
 
 

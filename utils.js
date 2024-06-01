@@ -1,7 +1,8 @@
+const Empty = require("./empty") 
+
 let matrix = [];
 let size = 50;
 let blockSize = 15;
-let frameCount = 0;
 
 function updatePosition(obj, newPos) {
     let [newRow, newCol] = newPos;
@@ -42,7 +43,6 @@ module.exports = {
     matrix: matrix,
     size: size,
     blockSize: blockSize,
-    frameCount: frameCount,
     updatePosition: updatePosition,
     findNeighbours: findNeighbours,
     random: random
