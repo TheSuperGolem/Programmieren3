@@ -4,7 +4,6 @@ const Tyrant = require("./tyrant");
 const Empty = require("./empty");
 
 const {matrix, size, random} = require("./utils");
-const Explosion = require("./explosion");
 
 let frameCount = 0
 
@@ -12,7 +11,6 @@ let creatureAmounts = [
     [Grass, 0.2],
     [Grazer, 0.05],
     [Tyrant, 0.01],
-    [Explosion, 0.001]
 ]
 
 function setup() {
@@ -45,7 +43,8 @@ function draw() {
     for (let col = 0; col < matrix.length; col++) {
         for (let row = 0; row < matrix[col].length; row++) {
             element = matrix[row][col]
-
+            
+            if (!element) continue;
             element.row = row
             element.col = col
 

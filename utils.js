@@ -1,4 +1,5 @@
-const Empty = require("./empty") 
+const Empty = require("./empty")
+const LivingBeing = require("./livingbeing");
 
 let matrix = [];
 let size = 50;
@@ -12,7 +13,7 @@ function updatePosition(obj, newPos) {
     obj.col = newCol;
 }
 
-function findNeighbours(row, col, n, cls) {
+function findNeighbours(row, col, n, cls = LivingBeing) {
     let fields = []
     for (let nCol = col - n; nCol <= col + n; nCol++) {
         for (let nRow = row - n; nRow <= row + n; nRow++) {
