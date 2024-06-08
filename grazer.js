@@ -1,7 +1,7 @@
 const LivingBeing = require("./livingbeing");
 const Grass = require("./grass");
 const Empty = require("./empty");
-const {matrix, updatePosition, findNeighbours, random} = require("./utils");
+const {matrix, updatePosition, findNeighbours, random, statistics} = require("./utils");
 
 module.exports = class Grazer extends LivingBeing {
     constructor(color, energy, row, col) {
@@ -34,6 +34,7 @@ module.exports = class Grazer extends LivingBeing {
             let spawnField = random(spawnElems);
             matrix[spawnField[0]][spawnField[1]] = new Grazer();
             this.energy -= 5;
+            statistics.grazer1++
         }
     }
 

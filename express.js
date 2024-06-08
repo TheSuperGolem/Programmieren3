@@ -6,7 +6,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-const {matrix, size, random} = require("./utils");
+const {matrix, size, random, statistics} = require("./utils");
 const {setup, draw} = require("./script");
 const Explosion = require("./explosion");
 
@@ -42,13 +42,15 @@ io.on('connection', (socket) => {
         const row = random(size);
         const col = random(size);
         matrix[row][col] = new Explosion('orange', 0, row, col);
-        io.emit('matrix', matrix);
+        // io.emit('matrix', matrix);
     });
 
     setup();
     interval = setInterval(() => {
         draw();
         socket.emit('matrix', matrix);
+        socket.emit('statistics', matrix);
+
     }, 30);
 });
 

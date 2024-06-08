@@ -5,6 +5,15 @@ let matrix = [];
 let size = 50;
 let blockSize = 15;
 
+let statistics = {
+    "grazer1": 0,
+    "grazer2": 0,
+    "grass1": 0,
+    "grass2": 0,
+    "tyrant1": 0,
+    "tyrant2": 0,
+}
+
 function updatePosition(obj, newPos) {
     let [newRow, newCol] = newPos;
     matrix[newRow][newCol] = obj;
@@ -46,5 +55,6 @@ module.exports = {
     blockSize: blockSize,
     updatePosition: updatePosition,
     findNeighbours: findNeighbours,
-    random: random
+    random: random,
+    statistics: statistics
 }

@@ -1,11 +1,13 @@
 // Socket.io: Verbindung zum Server herstellen
 // Die socket Variable enthält eine Verbindung zum Server.
+
 const socket = io();
 const cellSize = 20;
 
+
 // setup Funktion von p5.js
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(1000, windowHeight);
 
     let explosionButton = createButton('Create Explosion');
     explosionButton.position(1050, 10);
@@ -33,6 +35,15 @@ function drawMatrix(matrix) {
 socket.on('matrix', (matrix) => {
     drawMatrix(matrix);
 });
+
+socket.on('statistics', (stats) => {
+    for (const [key, value] of Object.entries(stats)) {
+        stat = document.getElementById(key);
+        stat.innerHTML = value
+    }
+});
+
+
 
 // wir können hier auch auf andere Ereignisse reagieren, die der Server sendet
 // socket.on('someEvent', (data) => {
