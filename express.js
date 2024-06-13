@@ -42,15 +42,13 @@ io.on('connection', (socket) => {
         const row = random(size);
         const col = random(size);
         matrix[row][col] = new Explosion('orange', 0, row, col);
-        // io.emit('matrix', matrix);
     });
 
     setup();
     interval = setInterval(() => {
         draw();
         socket.emit('matrix', matrix);
-        socket.emit('statistics', matrix);
-
+        socket.emit('statistics', statistics);
     }, 30);
 });
 

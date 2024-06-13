@@ -1,0 +1,7 @@
+table{
+    margin-left: 40px;
+}
+th, td{
+    border: 2px solid rgb(95, 95, 95);
+    width: 100px;
+}

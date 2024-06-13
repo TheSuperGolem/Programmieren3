@@ -17,12 +17,15 @@ module.exports = class Grazer extends LivingBeing {
         if (food.length > 0) {
             let grassField = random(food);
             updatePosition(this, grassField);
+            statistics.grass2++;
+            statistics.grazer1++;
             this.energy++;
         } else {
             let others = findNeighbours(this.row, this.col, 1, Empty)
             if (others.length > 0) {
                 let emptyField = random(others);
                 updatePosition(this, emptyField);
+                statistics.grazer2++;
             }
             this.energy--;
         }
@@ -34,7 +37,7 @@ module.exports = class Grazer extends LivingBeing {
             let spawnField = random(spawnElems);
             matrix[spawnField[0]][spawnField[1]] = new Grazer();
             this.energy -= 5;
-            statistics.grazer1++
+            statistics.grazer1++;
         }
     }
 
@@ -44,6 +47,7 @@ module.exports = class Grazer extends LivingBeing {
             this.mul();
         } else if (this.energy <= 0) {
             matrix[this.row][this.col] = new Empty();
+            statistics.grazer2++;
         }
     }
 }

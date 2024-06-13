@@ -18,6 +18,7 @@ module.exports = class Tyrant extends LivingBeing{
             let grazerField = random(food);
             updatePosition(this, grazerField);
             this.energy += 10;
+            statistics.grazer2++;
         } else {
             this.energy--;
         }
@@ -29,7 +30,7 @@ module.exports = class Tyrant extends LivingBeing{
             let emptyField = random(spawnElems);
             matrix[emptyField[0]][emptyField[1]] = new Tyrant();
             this.energy -= 100;
-            statistics.tyrant1++
+            statistics.tyrant1++;
         }
     }
 
@@ -39,6 +40,7 @@ module.exports = class Tyrant extends LivingBeing{
             this.mul();
         } else if (this.energy <= 0) {
             matrix[this.row][this.col] = new Empty();
+            statistics.tyrant2++;
         }
     }
 }

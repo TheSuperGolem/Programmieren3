@@ -3,7 +3,7 @@ const Empty = require("./empty");
 const Grass = require("./grass");
 const Grazer = require("./grazer");
 const Tyrant = require("./tyrant");
-const {matrix, findNeighbours} = require("./utils");
+const {matrix, findNeighbours, statistics} = require("./utils");
 
 module.exports = class Explosion extends LivingBeing {
     constructor(color, energy, row, col) {
@@ -37,6 +37,13 @@ module.exports = class Explosion extends LivingBeing {
                         let target = matrix[i][j];
                         if (target instanceof Grass || target instanceof Grazer || target instanceof Tyrant || target instanceof Empty) {
                             matrix[i][j] = new Empty(this.color);
+                            if (target instanceof Grass){
+                                statistics.grass2++;
+                            } else if (target instanceof Grazer){
+                                statistics.grazer2++;
+                            } else if (target instanceof Tyrant){
+                                statistics.tyrant2++;
+                            }
                         }
                     }
                 }

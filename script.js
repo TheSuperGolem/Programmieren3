@@ -3,7 +3,7 @@ const Grazer = require("./grazer");
 const Tyrant = require("./tyrant");
 const Empty = require("./empty");
 
-const {matrix, size, random} = require("./utils");
+const {matrix, size, random, statistics} = require("./utils");
 
 let frameCount = 0
 
@@ -35,6 +35,13 @@ function fillMatrix() {
         for (let col = 0; col < size; col++) {
             let cls = getRandomCreature();
             matrix[row][col] = new cls();
+            if (cls == Grass){
+                statistics.grass1++;
+            } else if (cls == Grazer){
+                statistics.grazer1++;
+            } else if (cls == Tyrant){
+                statistics.tyrant1++;
+            }
         }
     }
 }
@@ -48,15 +55,6 @@ function draw() {
             element.row = row
             element.col = col
 
-            // if (element instanceof Grazer) {
-            //     process.stdout.write("Y")
-            // } else if (element instanceof Grass) {
-            //     process.stdout.write("G")
-            // } else if (element instanceof Tyrant) {
-            //     process.stdout.write("R")
-            // } else if (element instanceof Empty) {
-            //     process.stdout.write(" ")
-            // }
             if (element instanceof Empty)continue
             
             if (element.stepCount === frameCount) {
@@ -66,9 +64,7 @@ function draw() {
                 element.stepCount = frameCount + 1;
             }
         }
-        // process.stdout.write("\n")
     }
-    // process.stdout.write("\u001b[" + matrix.length + "A")
     frameCount++;
 }
 

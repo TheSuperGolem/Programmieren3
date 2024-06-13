@@ -38,8 +38,8 @@ socket.on('matrix', (matrix) => {
 
 socket.on('statistics', (stats) => {
     for (const [key, value] of Object.entries(stats)) {
-        stat = document.getElementById(key);
-        stat.innerHTML = value
+        let stat = document.getElementById(key);
+        stat.innerHTML = value;
     }
 });
 

@@ -21,12 +21,12 @@ module.exports = class Grass extends LivingBeing{
     multiply() {
         let elems = findNeighbours(this.row, this.col, 1, Empty)
         if (elems.length > 0) {
-            statistics.grass1++
             let free = random(elems);
             let row = free[0];
             let col = free[1];
             matrix[row][col] = new Grass();
             this.energy = 0;
+            statistics.grass1++
         }
     }
 }
